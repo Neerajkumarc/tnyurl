@@ -8,8 +8,12 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("connected");
 });
 
+app.use(express.json());
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: false }));
+
 app.get("/", (req, res) => {
-  res.send("hi");
+  res.send("hi1");
 });
 app.listen(PORT, () => {
   console.log("server started on ", PORT);
