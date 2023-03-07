@@ -1,4 +1,5 @@
 const PORT = process.env.PORT || 3004;
+const path = require("path")
 const express = require("express");
 const app = express();
 require("dotenv").config();
@@ -11,6 +12,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 
 app.use(express.json());
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", async (req, res) => {
